@@ -11,10 +11,15 @@ try:
 except Exception as e:
     print("\nERROR:", e)
 
-new_event = {
+elastic.indices.refresh(index="audit")
+res = elastic.search(index="audit", body={"query": {"match_all": {}}})
+print("Got %d Hits:" % res['hits']['total']['value'])
+for hit in res['hits']['hits']:
+    print(hit['_source'])
 
-}
-
+# new_event = {
+#
+# }
 # doc_id = uuid.uuid4()
 #
 # res = elastic.index(
@@ -26,9 +31,3 @@ new_event = {
 #
 # res = elastic.get(index="audit", id=doc_id)
 # print(res['_source'])
-
-elastic.indices.refresh(index="audit")
-res = elastic.search(index="audit", body={"query": {"match_all": {}}})
-print("Got %d Hits:" % res['hits']['total']['value'])
-for hit in res['hits']['hits']:
-    print(hit['_source'])
