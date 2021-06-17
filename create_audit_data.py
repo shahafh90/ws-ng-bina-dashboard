@@ -13,8 +13,11 @@ except Exception as e:
     print("\nERROR:", e)
 
 elastic.indices.refresh(index="audit")
-res = elastic.search(index="audit", body={"query": {"match_all": {}}}, size=1000)
+res = elastic.search(index="audit", body={"query": {"match_all": {}}}, size=100)
 
 print("Got %d Hits:" % res['hits']['total']['value'])
 for hit in res['hits']['hits']:
     print(hit['_source']['doc'])
+
+elastic.close()
+

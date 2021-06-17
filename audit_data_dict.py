@@ -36,6 +36,9 @@ class USER_DEPT_ENUM(Enum):
     MadorD = 'מדור ד'
 
 
+# Also Possible to make one actions-list with ALL random ACTION_TYPE_ENUM,
+# this time i wanted to separate for different reasons
+
 # ################### -------------------- START ENTITY CREATED ACTIONS -------------------- ################### #
 
 data_entity_created_actions = [
