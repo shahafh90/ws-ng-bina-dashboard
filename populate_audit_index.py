@@ -1,5 +1,5 @@
 from elasticsearch import Elasticsearch, helpers
-from audit_data_dict import all_actions
+from audit_data import all_actions
 
 elastic = Elasticsearch(hosts=['localhost:9200'])
 
